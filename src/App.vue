@@ -5,7 +5,7 @@ const fn = () => {
 </script>
 
 <template>
-  <div>
+  <div class="mainWrapper">
     <!-- <rc-button type="primary" @click="fn">123</rc-button>
     <rc-button type="info" loading></rc-button>
     <rc-button icon="sousuo" type="primary" iconPosition="right">123</rc-button>
@@ -13,7 +13,7 @@ const fn = () => {
        <rc-button type="success">成功按钮</rc-button>
        <rc-button type="danger">危险按钮</rc-button>
     </rc-button-group> -->
-    <rc-row :gutter="12">
+    <rc-row>
       <rc-col :span="12">
         <div class="red">aaa</div>
       </rc-col>
@@ -34,14 +34,39 @@ const fn = () => {
         <div class="green">ddd</div>
       </rc-col>
     </rc-row>
+    <rc-row :gutter="12">
+        <rc-col :span="6">
+          <div class="red">ccc</div>
+        </rc-col>
+        <rc-col :span="6">
+          <div class="green">ddd</div>
+        </rc-col>
+        <rc-col :span="6">
+          <div class="red">ddd</div>
+        </rc-col>
+        <rc-col :span="6">
+          <div class="green">ddd</div>
+        </rc-col>
+    </rc-row>
+    <rc-row justify="center">
+      <rc-col :span="3">
+        <div class="red">center</div>
+      </rc-col>
+      <rc-col :span="3">
+        <div class="green">center2</div>
+      </rc-col>
+    </rc-row>
   </div>
 </template>
 
 <style lang="scss">
 .red {
-  background: red;
+  background: #ff6362;
 }
 .green {
   background: greenyellow;
+}
+.mainWrapper {
+  overflow-x: hidden;
 }
 </style>

@@ -1,3 +1,9 @@
+### 动态导入组件
+
+### scss each 写法
+
+
+### vue3 TS
 #### defineProps
 
 ```ts
@@ -66,3 +72,5 @@ const helloClick = () => {
 }
 </script>
 ```
+
+### provide inject 透传

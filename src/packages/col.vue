@@ -5,16 +5,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, defineProps, watch, withDefaults } from "vue";
+import { computed, defineComponent, defineProps, watch, withDefaults, inject } from "vue";
 export default defineComponent({
   name: 'rc-col'
 })
 </script>
 
 <script lang="ts" setup>
+  type Action = Object | number
+
   interface Props {
     span?: number,
-    offset?: number
+    offset?: number,
+    xs: Action
   }
   
   const {offset, span} = withDefaults(defineProps<Props>(), {
@@ -22,8 +25,8 @@ export default defineComponent({
     offset: 0
   })
 
-  let gutter = 0
-  
+  let gutter: number | any = inject('gutter') 
+
   // 统一管理样式
   let colClass = computed(() => {
     let classes = []

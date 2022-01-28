@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lib": "vite build --target lib"
+    "preview": "vite preview"
   },
   "main": "./dist/rice-ui-vue3.umd.js",
   "dependencies": {

@@ -35,7 +35,7 @@ const fn = () => {
       </rc-col>
     </rc-row>
     <rc-row :gutter="12">
-        <rc-col :span="6">
+        <rc-col :span="6" :xs="2">
           <div class="red">ccc</div>
         </rc-col>
         <rc-col :span="6">
@@ -49,7 +49,7 @@ const fn = () => {
         </rc-col>
     </rc-row>
     <rc-row justify="center">
-      <rc-col :span="3">
+      <rc-col :span="3" :xs="8" :sm="9">
         <div class="red">center</div>
       </rc-col>
       <rc-col :span="3">

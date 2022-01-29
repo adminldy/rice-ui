@@ -10,5 +10,11 @@ export default defineConfig({
       entry: path.resolve(__dirname, './src/packages/index.ts'),
       name: 'rice-ui',
     }
-  }
+  },  
+ resolve: {
+    alias: {
+      '/@': path.resolve('src')
+    }
+  },
 })
+

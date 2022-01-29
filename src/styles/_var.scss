@@ -27,6 +27,12 @@ $map: (
   "xl": (min-width: $--xl)
 );
 
+@mixin res($key) {
+  @media only screen and #{inspect(map-get($map, $key))} {
+    @content 
+  }  
+}
+
 $primary-active: #3a8ee6;
 $success-active: #5daf34;
 $warning-active: #cf9236;

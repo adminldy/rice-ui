@@ -14,7 +14,7 @@ export default defineComponent({
 <script lang="ts" setup>
   interface Props {
     gutter?: number,
-    justify: string
+    justify?: string
   }
   
   const {gutter, justify} = withDefaults(defineProps<Props>(), {

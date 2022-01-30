@@ -9,7 +9,7 @@
   "main": "./dist/rice-ui-vue3.umd.js",
   "dependencies": {
     "vue": "^3.2.25",
-    "vue-router": "^3.5.3"
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

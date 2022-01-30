@@ -12,7 +12,7 @@
 </template>
  
 <script lang="ts">
- import { defineComponent, computed, defineProps, withDefaults, defineEmits} from 'vue'
+ import { defineComponent, computed, defineProps, withDefaults, defineEmits, onMounted} from 'vue'
  export default defineComponent({
     name: 'rc-button',
  })
@@ -44,7 +44,8 @@
     
     // emit
     const emit = defineEmits<{
-      (e: 'click', num: number): void
+      (e: 'click', num: number): void,
+      (e: 'update:modelValue', value: string)
     }>()
 
     const clickBtn = (e: any) => {

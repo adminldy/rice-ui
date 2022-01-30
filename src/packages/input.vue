@@ -1,16 +1,65 @@
 <template>
-  <div>
-    <input type="text">
+  <div class="rc-input">
+    <input 
+    :type="type" 
+    :value="modelValue" 
+    :placeholder="placeholder"
+    name="name"
+    @input="inputEvent"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, defineProps, Prop, withDefaults, defineEmits } from 'vue'
 export default defineComponent({
   name: 'rc-input'
 })
 </script>
 
-<style>
+<script lang="ts" setup>
+ interface Props {
+   name?: string,
+   type?: string,
+   placeholder?: string,
+   modelValue?: string
+ }
 
+let {name, type, placeholder, modelValue} = withDefaults(defineProps<Props>(), {
+  name: '',
+  type: '',
+  placeholder: '请输入内容',
+  modelValue: ''
+})
+
+ const emit = defineEmits<{
+    (e: 'update:modelValue', num: number): void
+  }>()
+
+const inputEvent = (e) => {
+  let input = e.target.value
+  if(modelValue !== input) {
+    emit('update:modelValue', input)
+  }
+}
+ 
+</script>
+
+<style lang="scss" scoped>
+@import '/@/styles/_var.scss';
+.rc-input {
+  display: inline-flex;
+  input {
+    padding: 8px;
+    width: 150px;
+    height: 42px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    &:focus {
+      border: 1px solid $primary;
+      outline: none;
+      box-shadow: inset -1px 0px 2px $primary, inset 1px 1px 1px $primary;
+    }
+  }
+}
 </style>

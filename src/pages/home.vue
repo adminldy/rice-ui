@@ -1,6 +1,6 @@
 <template>
   <div class="homeWrapper">
-    <router-link to="/inputPage" class="linkStyle">
+    <router-link to="/inputpage" class="linkStyle">
       <rc-button type="primary">跳转到inputPage</rc-button>
     </router-link>
   </div>

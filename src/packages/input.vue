@@ -4,14 +4,14 @@
     :type="type" 
     :value="modelValue" 
     :placeholder="placeholder"
-    name="name"
-    @input="inputEvent"
+    :name="name"
+    @input="inputEvent($event)"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, defineProps, Prop, withDefaults, defineEmits } from 'vue'
+import { defineComponent, defineProps, withDefaults, defineEmits, watch, ref, getCurrentInstance } from 'vue'
 export default defineComponent({
   name: 'rc-input'
 })
@@ -25,7 +25,7 @@ export default defineComponent({
    modelValue?: string
  }
 
-let {name, type, placeholder, modelValue} = withDefaults(defineProps<Props>(), {
+let props = withDefaults(defineProps<Props>(), {
   name: '',
   type: '',
   placeholder: '请输入内容',
@@ -33,14 +33,12 @@ let {name, type, placeholder, modelValue} = withDefaults(defineProps<Props>(), {
 })
 
  const emit = defineEmits<{
-    (e: 'update:modelValue', num: number): void
+    (e: 'update:modelValue', modelValue: string): void
   }>()
 
-const inputEvent = (e) => {
-  let input = e.target.value
-  if(modelValue !== input) {
-    emit('update:modelValue', input)
-  }
+const inputEvent = (e: Event) => {
+  let input = (e.target as HTMLInputElement).value  
+  emit('update:modelValue', input)
 }
  
 </script>

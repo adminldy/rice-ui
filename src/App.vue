@@ -6,14 +6,14 @@ const fn = () => {
 
 <template>
   <div class="mainWrapper">
-    <!-- <rc-button type="primary" @click="fn">123</rc-button>
+    <rc-button type="primary" @click="fn">123</rc-button>
     <rc-button type="info" loading></rc-button>
     <rc-button icon="sousuo" type="primary" iconPosition="right">123</rc-button>
     <rc-button-group>
        <rc-button type="success">成功按钮</rc-button>
        <rc-button type="danger">危险按钮</rc-button>
-    </rc-button-group> -->
-    <!-- <rc-row>
+    </rc-button-group>
+    <rc-row>
       <rc-col :span="12">
         <div class="red">aaa</div>
       </rc-col>
@@ -55,7 +55,7 @@ const fn = () => {
       <rc-col :span="3">
         <div class="green">center2</div>
       </rc-col>
-    </rc-row> -->
+    </rc-row>
     <!-- <rc-container>
       <rc-header></rc-header>
       <rc-footer></rc-footer>

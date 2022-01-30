@@ -13,7 +13,7 @@ const fn = () => {
        <rc-button type="success">成功按钮</rc-button>
        <rc-button type="danger">危险按钮</rc-button>
     </rc-button-group> -->
-    <rc-row>
+    <!-- <rc-row>
       <rc-col :span="12">
         <div class="red">aaa</div>
       </rc-col>
@@ -55,7 +55,12 @@ const fn = () => {
       <rc-col :span="3">
         <div class="green">center2</div>
       </rc-col>
-    </rc-row>
+    </rc-row> -->
+    <!-- <rc-container>
+      <rc-header></rc-header>
+      <rc-footer></rc-footer>
+    </rc-container> -->
+    <rc-input></rc-input>
   </div>
 </template>
 

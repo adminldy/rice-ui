@@ -210,8 +210,9 @@ let uploadFiles = (files: any) => {
 }
 
 // 文件变化
-  const files = (e.target as HTMLInputElement).
-let handleChange = (e: Event) => {files
+
+let handleChange = (e: Event) => {
+  const files = (e.target as HTMLInputElement).files
   uploadFiles(files)
 }
 

@@ -1,19 +1,23 @@
 <template>
   <div class="rc-upload">
-    <div @click="handleClick" class="rc-upload-btn">
-      <slot></slot>
-    </div>
-    <input type="file" :accept="accept" :multiple="multiple" @change="handleChange" :name="name" ref="input" class="input" />
+    <upload-dragger v-if="drag" :accept="accept" @file="uploadFiles"></upload-dragger>
+    <template v-else>
+      <div @click="handleClick" class="rc-upload-btn">
+        <slot></slot>
+      </div>
+      <input type="file" :accept="accept" :multiple="multiple" @change="handleChange" :name="name" ref="input" class="input" />
+    </template>
     <div>
       <slot name="tip"></slot>
     </div>
     <ul>
-      <li v-for="file in data.files" :key="file.uid">
+      <li v-for="(file, index) in data.files" :key="file.uid">
         <div class="list-item">
           <rc-icon icon="file"></rc-icon>
           {{file.name}}
           {{file.status}}
-          <rc-icon icon="cha"></rc-icon>
+          <rc-icon icon="cha" @click="data.files.splice(index, 1)"></rc-icon>
+          <rc-progress :percentage="file.percent"></rc-progress>
         </div>
       </li>
     </ul>
@@ -22,9 +26,13 @@
 
 <script lang="ts">
 import {withDefaults, defineProps, ref, onMounted, reactive, watch, effect} from 'vue'
+import uploadDragger from './upload-dragger.vue'
 import ajax from './ajax.ts'
 export default {
-  name: "rc-upload"
+  name: "rc-upload",
+  components: {
+    uploadDragger
+  }
 }
 </script>
 
@@ -46,6 +54,7 @@ interface Props {
   multiple?: boolean,
   fileList?: Array<fileType>,
   accept?: string,
+  drag: boolean,
   // 超出限制后， 会执行此方法
   onExceed?: Function,
   onChange?: Function,
@@ -53,13 +62,14 @@ interface Props {
   onError?: Function,
   onProgress?: Function,
   beforeUpload?: Function,
-  httpRequset?: Function // 我会默认提供一个ajax， 如果你传了会用你的
+  httpRequset?: Function ,// 我会默认提供一个ajax， 如果你传了会用你的
 }
 
 let props = withDefaults(defineProps<Props>(), {
   name: 'file',
   action: '',
   accept: '',
+  drag: false,
   onProgress: () => {
 
   },
@@ -120,9 +130,9 @@ let handleProgress = (ev, rawFile) => {
 let handleSuccess = (res, rawFile) => {
   let file = getFile(rawFile)
   file.status = 'success'
+  file.percent = 100
   props.onSuccess(res, rawFile)
   props.onChange(file)
-  data.reqs[file.uid]
 }
 
 let handleError = (err, rawFile) => {
@@ -200,8 +210,8 @@ let uploadFiles = (files: any) => {
 }
 
 // 文件变化
-let handleChange = (e: Event) => {
-  const files = (e.target as HTMLInputElement).files
+  const files = (e.target as HTMLInputElement).
+let handleChange = (e: Event) => {files
   uploadFiles(files)
 }
 
@@ -211,12 +221,15 @@ onMounted(() => {
 })
 
 
-effect(() => {
-  data.files = props.fileList?.map((item: any) => {
+watch(() => props.fileList, () => {
+   data.files = props.fileList?.map((item: any) => {
     item.uid = Date.now() + tempIndex.value++
     item.status = 'success'
+    item.percent = 100
     return item
   })
+}, {
+  immediate: true
 })
 </script>
 

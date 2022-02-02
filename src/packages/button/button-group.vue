@@ -25,7 +25,7 @@ export default defineComponent({
     })
 </script>
 <style lang="scss">
-@import '../styles/_var.scss';
+@import '/@/styles/_var.scss';
 .rc-button-group {
   display: inline-flex;
   vertical-align: middle;

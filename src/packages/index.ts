@@ -8,7 +8,7 @@
 // const req = require.context('./', false, /[^.]+\.vue/)
 // 因为vite不能使用require 在vite官方文档中用 import.meta.globEager替代了require.context 他们是一样的效果
 import type {App} from 'vue'
-const req = import.meta.globEager('./*.vue')
+const req = import.meta.globEager('./**.vue')
 
 let componentsName: string[] = Object.keys(req).map(key => key)
 

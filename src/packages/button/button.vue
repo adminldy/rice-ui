@@ -45,7 +45,6 @@
     // emit
     const emit = defineEmits<{
       (e: 'click', num: number): void,
-      (e: 'update:modelValue', value: string)
     }>()
 
     const clickBtn = (e: any) => {
@@ -66,7 +65,7 @@
 
 <style lang="scss">
 // 设置button默认样式
-@import '../styles/_var.scss';
+@import '/@/styles/_var.scss';
 $height: 42px;
 $font-size: 16px;
 $color: #606266;
@@ -132,7 +131,7 @@ $active-color: #3a8ee6;
   }
   // 调整顺序
    &-left {
-    svg {order: 1};
+    svg {order: 1;margin-right: 4px;margin-left: 0};
     span {order: 2;};
    }
 
